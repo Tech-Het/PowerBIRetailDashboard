@@ -1,0 +1,64 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.0.0/schema.json",
+  "name": "ReportSection323ec2acd66840817109",
+  "displayName": "Product",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visibility": "HiddenInViewMode",
+  "pageBinding": {
+    "name": "Pod",
+    "type": "Default",
+    "parameters": [],
+    "referenceScope": "CrossReport"
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 1,
+                    "Percent": 0.2
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "a8444674745d3be75090",
+      "target": "f22e965d351661399ab0",
+      "type": "DataFilter"
+    },
+    {
+      "source": "a8444674745d3be75090",
+      "target": "d2d00da9d78690666180",
+      "type": "DataFilter"
+    },
+    {
+      "source": "a8444674745d3be75090",
+      "target": "15417300482006974729",
+      "type": "DataFilter"
+    },
+    {
+      "source": "a8444674745d3be75090",
+      "target": "b2b12970bbd2eb0bba27",
+      "type": "DataFilter"
+    }
+  ]
+}

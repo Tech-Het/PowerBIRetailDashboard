@@ -1,0 +1,53 @@
+table Returns
+	lineageTag: 9fda0ab0-1910-4b9d-8760-f55c19409cee
+
+	column Returned
+		dataType: string
+		lineageTag: 15ed528f-dc29-491e-bcfa-129750e0602c
+		summarizeBy: none
+		sourceColumn: Returned
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order ID'
+		dataType: string
+		lineageTag: ca160cd0-b8f6-4aa0-b2fd-1514b2c42b5c
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Return Sales' = CALCULATE(SUM(Orders[Sales]), FILTER(Orders, Orders[Order ID]= Returns[Order ID]))
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: a25aa950-b15b-4905-a414-56e7152d6f14
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Return Qty' = CALCULATE(SUM(Orders[Quantity]), FILTER(Orders, Orders[Order ID]= Returns[Order ID]))
+		dataType: int64
+		formatString: 0
+		lineageTag: f1483ed2-a440-43cb-ac1d-0b2ea6853524
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Returns = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Qrios Tech\Downloads\Task\Task\Data\Sample - Superstore.xls"), null, true),
+				    Returns1 = Source{[Name="Returns"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Returns1,{{"Column1", type text}, {"Column2", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Returned", type text}, {"Order ID", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

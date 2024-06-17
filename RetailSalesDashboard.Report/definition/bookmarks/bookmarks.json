@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "Bookmark394cba66da23eb448a08",
+      "displayName": "Feb Degrowth",
+      "children": [
+        "Bookmark2bc4069ea30245830b59",
+        "Bookmark82df98e648700c0b4218",
+        "Bookmark9b7fd10562f17519906c"
+      ]
+    }
+  ]
+}

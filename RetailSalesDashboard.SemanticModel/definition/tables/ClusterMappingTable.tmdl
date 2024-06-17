@@ -1,0 +1,64 @@
+table ClusterMappingTable
+	isHidden
+	isPrivate
+	lineageTag: 291770ed-decc-4548-a27d-48a402aa3a51
+
+	column Product_Name
+		dataType: string
+		lineageTag: 714cd997-e085-4c3e-9cb3-f0e11c87ed6f
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Product_Name]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Orders","TableItemName":"Product Name (clusters)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	column ClusterId
+		dataType: int64
+		formatString: 0
+		lineageTag: 546f6115-13f0-46f2-ba94-ea2d8c120487
+		summarizeBy: count
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [ClusterId]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Orders","TableItemName":"Product Name (clusters)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
+	partition ClusterMappingTable = calculated
+		mode: import
+		source = ```
+				VAR __DS0Core = 
+					SUMMARIZECOLUMNS(
+						'Orders'[Product Name],
+						"SumProfit", CALCULATE(SUM('Orders'[Profit])),
+						"SumSales", CALCULATE(SUM('Orders'[Sales]))
+					)
+				
+				VAR __DataTransformT0 = 
+					KMeansClustering(
+						SELECTCOLUMNS(
+							__DS0Core,
+							"Product_Name", 'Orders'[Product Name],
+							"SumProfit", [SumProfit],
+							"SumSales", [SumSales]
+						),
+						{("[SumProfit]", "Attribute"),
+							("[SumSales]", "Attribute"),
+							("[Product_Name]", "Item")},
+						{("[Product_Name]", BLANK()),
+							("ClusterId", "ClusterId")},
+						4
+					)
+				
+				RETURN __DataTransformT0
+				```
+			retainDataTillForceCalculate
+
+	annotation ClusterMappingTable = true
+
+	annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Orders","TableItemName":"Product Name (clusters)","ObjectType":4},"LinkType":"UsedInGroup"}]
+

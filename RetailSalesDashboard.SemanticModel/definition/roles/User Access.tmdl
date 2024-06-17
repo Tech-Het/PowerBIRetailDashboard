@@ -1,0 +1,7 @@
+role 'User Access'
+	modelPermission: read
+
+	tablePermission 'User Access Role' = [User] == USERPRINCIPALNAME()
+
+	annotation PBI_Id = f42dbfba13b34ced974284d2e08303ef
+

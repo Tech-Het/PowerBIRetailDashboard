@@ -1,0 +1,28 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Orders","Returns","User Access Role"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.130.754.0 (24.06)
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Orders
+ref table DateTableTemplate_af8ba9cf-5abd-48a6-a4d3-5bd4814dc773
+ref table LocalDateTable_35f8b3df-2e65-4628-b3ed-21599c7cf8ae
+ref table LocalDateTable_7c2543f3-9df8-46bc-837d-56212f6d6a22
+ref table Returns
+ref table 'User Access Role'
+ref table ClusterMappingTable
+
+ref role 'User Access'
+
+ref cultureInfo en-US
+

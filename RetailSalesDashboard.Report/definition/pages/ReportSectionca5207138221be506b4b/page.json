@@ -1,0 +1,58 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.0.0/schema.json",
+  "name": "ReportSectionca5207138221be506b4b",
+  "displayName": "Sales",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visibility": "HiddenInViewMode",
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 1,
+                    "Percent": 0.2
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "1efd8ffbb05e090a5eb6",
+      "target": "6c376fbb40512e40a56d",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1efd8ffbb05e090a5eb6",
+      "target": "e04b963f4b002de2dde9",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1efd8ffbb05e090a5eb6",
+      "target": "eaca1db56912c8207221",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1efd8ffbb05e090a5eb6",
+      "target": "7adb8d1968572b7d2b68",
+      "type": "DataFilter"
+    }
+  ]
+}

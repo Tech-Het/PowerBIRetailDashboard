@@ -1,0 +1,53 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.0.0/schema.json",
+  "name": "ReportSectionfc8276e2530b073a97da",
+  "displayName": "Profit",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visibility": "HiddenInViewMode",
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 1,
+                    "Percent": 0.2
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "7d5864201a1756042528",
+      "target": "793394929ca10d3a0cca",
+      "type": "DataFilter"
+    },
+    {
+      "source": "7d5864201a1756042528",
+      "target": "c008c30ebc6453122256",
+      "type": "DataFilter"
+    },
+    {
+      "source": "7d5864201a1756042528",
+      "target": "f940016590de398a03a6",
+      "type": "DataFilter"
+    }
+  ]
+}

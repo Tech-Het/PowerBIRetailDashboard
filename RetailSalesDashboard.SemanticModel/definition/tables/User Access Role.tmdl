@@ -1,0 +1,35 @@
+table 'User Access Role'
+	lineageTag: 374b3a19-6fc8-421d-9739-a113fb93f23e
+
+	measure 'User Logged In' = USERPRINCIPALNAME()
+		lineageTag: 19655477-e239-4036-9ca9-a0ec23027e45
+
+	column User
+		dataType: string
+		lineageTag: c6567aa3-6fbc-4df6-8b6f-2468f0ededc7
+		summarizeBy: none
+		sourceColumn: User
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Page Access'
+		dataType: string
+		lineageTag: f55bf0e5-73cc-4d00-a374-901e1314fae7
+		summarizeBy: none
+		sourceColumn: Page Access
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'User Access Role' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("lc3BCYAwDEDRXXouziAIXhU8Fg+lphqsJsS0rq/oBB3g/e+c2UDZK6R2zZJ3yey5aNKlofPAIHRR1CbQYawZCkhBuM1sq9zkE1y1aBRactDq14bMeK6f6/rhL0V8Q/MD", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [User = _t, #"Page Access" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"User", type text}, {"Page Access", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
